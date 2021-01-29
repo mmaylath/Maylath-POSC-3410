@@ -155,21 +155,26 @@ but there are notable spikes."
 # Base Scatterplot 
 gtd_df %>% 
   ggplot(aes(x=ransomamt, y=ransompaid))+
-  "Fill in the blank"
+  geom_point()
 
 # Color Approach 
 # HINT: the format for scientific notation in R is 1e03 = 1000
 gtd_df %>% 
-  filter(ransompaid<"Fill in the blank" & ransomamt < "Fill in the blank") %>% 
+  filter(ransompaid<1e08 & ransomamt < 2.5e08) %>% 
   ggplot(aes(x=ransomamt, y=ransompaid, color=region_txt))+
   geom_point()
 
 # Facet Wrap Approach 
 gtd_df %>% 
-  %>% # What is the correct tidyverse command? 
-  + # What is the correct ggplot command? 
-  + # What is the correct ggplot command? 
-  facet_wrap(~"fill in the blank", scales = "free", nrow=4)
+  filter(ransompaid<1e08 & ransomamt < 2.5e08) %>% # What is the correct tidyverse command? 
+  ggplot(aes(x=ransomamt, y=ransompaid, color=region_txt))+ # What is the correct ggplot command? 
+  geom_point() + # What is the correct ggplot command? 
+  facet_wrap(~region_txt, scales = "free", nrow=4)
 
-Answer8_plot <- "Assign the plot you created to this object." 
+Answer8_plot <- gtd_df %>% 
+  filter(ransompaid<1e08 & ransomamt < 2.5e08) %>% # What is the correct tidyverse command? 
+  ggplot(aes(x=ransomamt, y=ransompaid, color=region_txt))+ # What is the correct ggplot command? 
+  geom_point() + # What is the correct ggplot command? 
+  facet_wrap(~region_txt, scales = "free", nrow=4)
+
 Answer8<- "Describe the trends you see. Do ransom demands achieve the same success across regions?"
