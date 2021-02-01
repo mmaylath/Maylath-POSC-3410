@@ -53,7 +53,7 @@ gtd_df %>%
   View()
 
 # Question 2: What year shows no terrorist attacks? Why are we missing it. (HINT: refer to the GTD Code Book). Code your answer as a text string called 'Answer2'.  ####
-Answer2 <- "1993 shows no terrorist attacks. need to look at reason in codebook"
+Answer2 <- "1993 shows no terrorist attacks. This is because the records from 1993 were lost before START compiled the GTD from various data collections."
 
 # Question 3: In how many incidents is there doubt as to whether the incident is terrorism? Code answer as numeric vector.####
 # View the code book to find which variable tells us if there is doubt whether the indicident is terorism. We will need to group and count. 
@@ -177,4 +177,7 @@ Answer8_plot <- gtd_df %>%
   geom_point() + # What is the correct ggplot command? 
   facet_wrap(~region_txt, scales = "free", nrow=4)
 
-Answer8<- "Describe the trends you see. Do ransom demands achieve the same success across regions?"
+Answer8<- "Ransom demands don't appear to always achieve the same success across regions. Regions like South Asia, Southeast Asia, Middle East & North Africa, and Sub-Saharan Africa
+all show two patterns of cases: one where little ranson was requested and much was paid and one where a large ransom was requested and little was paid. In western Europe and South America, there seems to be a positive correlation between ransom requested and ransom paid.
+ North America And Eastern Europe also seem to pay more when more ransom is requested, but there isn't much data in the middle area to show this correlation. Australia, Central Asia, and East Asia are hard to evaluate for relationships between the two variables because of
+limited cases."
