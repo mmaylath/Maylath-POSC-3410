@@ -11,12 +11,12 @@
 # Set Up####
 # Libraries
 library(tidyverse)
-
+library(stargazer)
 # Data
-load("DALs/DAL6/autm_example_df.Rdata")
-load("DALs/DAL6/gtd_raw.Rdata")
+load("autm_example_df.Rdata")
+load("gtd_df.Rdata")
 
-# Make analysis df 
+# Make analysis df for gtd
 gtd_df <- gtd_raw
 
 # Regression Practice - AUTM Dataset ####
@@ -40,16 +40,19 @@ t.test(nu_df$totResExp, warf_df$totResExp)
 
 # lm NU  
 summary(lm(data = nu_df, grossLicInc ~ totResExp))
+nu_df_ro <- lm(data = nu_df, grossLicInc ~ totResExp)
 # p-val = .2016
 # R^2 - tells how much of the change in the dep. variable can be explained by the line
 # negative intercept - doesn't make a lot of sense, only gives us an idea for this data set
+# stargazer(simple_model, type = "html", out = "simple_model2.html")
 
 # lm Warf
 summary(lm(data=warf_df, grossLicInc ~ totResExp ))
+warf_df_ro <- lm(data=warf_df, grossLicInc ~ totResExp )
 # p-val = .007319
 # for a 1 unit (1$) change in totResExp, there is a .06034 change in grossLicInc
 # with 99% certainty we can say this is the relationship
-
+stargazer(warf_df_ro, type = "html", out = "warf_star.html")
 
 # scatterplot with categorical variable 
 autm_example_df %>% 
@@ -60,9 +63,10 @@ autm_example_df %>%
   facet_wrap(~institution, scales="free")
   
 
-# lm autm_example_df + institution variable 
+# lm autm_example_df + institution variables
 summary(lm(data=autm_example_df, grossLicInc ~ totResExp + institution))
-
+autm_df_ro <- lm(data=autm_example_df, grossLicInc ~ totResExp + institution)
+stargazer(autm_df_ro, type = "html", out = "autm_df_star.html")
 
 # GTD Data #### 
 
@@ -86,6 +90,8 @@ gtd_by_year_df <- gtd_df %>%
 
 # lm gtd_by_year_df
 summary(lm(data = gtd_by_year_df, attacks ~ iyear)) 
+gtd_ro <- lm(data = gtd_by_year_df, attacks ~ iyear)
+stargazer(gtd_ro, type = "html", out = "gtd_star.html")
 
 # How do we better fit the line? 
 # choose areas that will have the same slope
