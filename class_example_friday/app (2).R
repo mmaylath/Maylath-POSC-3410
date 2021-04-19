@@ -1,11 +1,11 @@
 # Title: Friday In Class 
-# Author: Grant A. Allard
-# Author's Email: grant@grantallard.com
+# Author: Madeleine Maylath
 # Date Created: 2021-04-16
 
-# friday class - answer key code
+# friday class - code for shiny app
 
-# Purpose:
+# Purpose: practice creating a shiny app that produces visualizations of data from 
+# the GSS data set.
 
 # Set Up####
 # Libraries
